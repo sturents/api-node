@@ -4,7 +4,7 @@
 
 #### Fetch houses
 
-var sturents = require('./index.js');
+`var sturents = require('./index.js');
 
 sturents.fetchHouses(function(json){
   var response = JSON.parse(json);
@@ -13,7 +13,7 @@ sturents.fetchHouses(function(json){
   houses.forEach(function(house){
     console.log(house.reference);
   });
-});
+});`
 
 #### Add house
 var request = {
@@ -74,7 +74,6 @@ var request = {
     "energy_performance": {
       'epc_reference': '',
       'epc_certificate' : '',
-
     },
     "accreditations": [],
     "incomplete": "0",
