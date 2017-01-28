@@ -25,15 +25,15 @@ function fetchHouses(callback){
 	}
 	// HTTP GET request
 	fetch(URI_HOUSES + '?' + querystring.stringify({ landlord: landlord_id, public: public_key }))
-    	.then(function(res) {
-        	return res.text();
-    	})
+    .then(function(res) {
+    	return res.text();
+    })
 		.then(function(json) {
-      	//console.log(json);
-				callback && callback(json);
+    	//console.log(json);
+			callback && callback(json);
 	  })
 		.catch(function(err) {
-        console.log(err);
+    	console.log(err);
 	  });
 }
 
@@ -50,10 +50,10 @@ function addHouse(json, callback){
 	// HTTP POST request
 	fetch(URI_HOUSE + '?' + querystring.stringify({landlord : landlord_id, auth: auth}), { method: 'POST', body: json })
     	.then(function(res) {
-        	return res.text();
+        return res.text();
 	    }).then(function(json) {
-    	  	console.log(json);
-					callback && callback(json);
+    		console.log(json);
+				callback && callback(json);
     	});
 }
 
