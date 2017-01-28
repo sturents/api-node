@@ -11,9 +11,9 @@ export LANDLORD_ID=
 /**
   Example of how to call fetchHouses
 */
+var sturents = require('./index.js');
 
 function list_houses(){
-  var sturents = require('./index.js');
 
   console.log('Fetching all houses');
   sturents.fetchHouses(function(json){
