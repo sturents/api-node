@@ -29,7 +29,6 @@ function fetchHouses(callback){
     	return res.text();
     })
 		.then(function(json) {
-    	//console.log(json);
 			callback && callback(json);
 	  })
 		.catch(function(err) {
