@@ -4,7 +4,8 @@
 
 #### Fetch houses
 
-`var sturents = require('./index.js');
+```
+var sturents = require('./index.js');
 
 sturents.fetchHouses(function(json){
   var response = JSON.parse(json);
@@ -13,9 +14,11 @@ sturents.fetchHouses(function(json){
   houses.forEach(function(house){
     console.log(house.reference);
   });
-});`
+});
+```
 
 #### Add house
+```
 var request = {
     "reference" : "Propert_reference_1234", // Must be unique across my properties, will use this for updating this property
     "available_from": "2017-09-01",
@@ -90,3 +93,4 @@ var request = {
 
 var json = JSON.stringify(request);
 sturents.addHouse(json);
+```
