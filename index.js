@@ -2,30 +2,30 @@ var md5 = require('md5');
 var fetch = require('node-fetch');
 const querystring = require('querystring');
 
-var public_key = process.env.STURENTS_PUBLIC_KEY;
-var api_key = process.env.STURENTS_API_KEY;
-var landlord_id = process.env.LANDLORD_ID;
+var publicKey = process.env.STURENTS_PUBLIC_KEY;
+var apiKey = process.env.STURENTS_API_KEY;
+var landlordId = process.env.LANDLORD_ID;
 
 const URI = "https://sturents.com/api";
 const URI_HOUSES = URI + "/houses";
 const URI_HOUSE = URI + "/house";
 
 function getAuth(json){
-	var auth_string = json + api_key;
+	var authString = json + apiKey;
 
-	return md5(auth_string);
+	return md5(authString);
 }
 
 function fetchHouses(callback){
-	if (!public_key){
+	if (!publicKey){
 		throw "Set STURENTS_PUBLIC_KEY env variable";
 	}
-	if (!landlord_id){
+	if (!landlordId){
 		throw "Set LANDLORD_ID env variable";
 	}
 
 	// HTTP GET request
-	fetch(URI_HOUSES + '?' + querystring.stringify({ landlord: landlord_id, public: public_key }))
+	fetch(URI_HOUSES + '?' + querystring.stringify({ landlord: landlordId, public: publicKey }))
     .then(function(res) {
     	return res.text();
     })
@@ -39,10 +39,10 @@ function fetchHouses(callback){
 }
 
 function addHouse(request, callback){
-	if (!api_key){
+	if (!apiKey){
 		throw "Set STURENTS_API_KEY env variable";
 	}
-	if (!landlord_id){
+	if (!landlordId){
 		throw "Set LANDLORD_ID env variable";
 	}
 
@@ -50,7 +50,7 @@ function addHouse(request, callback){
 	var auth = getAuth(json);
 
 	// HTTP POST request
-	fetch(URI_HOUSE + '?' + querystring.stringify({landlord : landlord_id, auth: auth}), { method: 'POST', body: json })
+	fetch(URI_HOUSE + '?' + querystring.stringify({landlord : landlordId, auth: auth}), { method: 'POST', body: json })
 	.then(function(res){
         return res.text();
     }).then(function(json){
