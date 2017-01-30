@@ -7,10 +7,10 @@
 ```
 var sturents = require('./index.js');
 
-sturents.fetchHouses(function(json){
-  var response = JSON.parse(json);
+sturents.fetchHouses(function(response){
   var houses = response.branches[0].properties;
   console.log('Total properties found ' + houses.length);
+
   houses.forEach(function(house){
     console.log(house.reference);
   });
@@ -91,6 +91,5 @@ var request = {
     }
 };
 
-var json = JSON.stringify(request);
-sturents.addHouse(json);
+sturents.addHouse(request);
 ```
