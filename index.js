@@ -16,13 +16,17 @@ function getAuth(json){
 	return md5(authString);
 }
 
+function checkLandlord(){
+	if (!landlordId){
+		throw "Set LANDLORD_ID env variable";
+	}
+}
+
 function fetchHouses(callback){
 	if (!publicKey){
 		throw "Set STURENTS_PUBLIC_KEY env variable";
 	}
-	if (!landlordId){
-		throw "Set LANDLORD_ID env variable";
-	}
+	checkLandlord();
 
 	// HTTP GET request
 	fetch(URI_HOUSES + '?' + querystring.stringify({ landlord: landlordId, public: publicKey }))
@@ -42,9 +46,7 @@ function addHouse(request, callback){
 	if (!apiKey){
 		throw "Set STURENTS_API_KEY env variable";
 	}
-	if (!landlordId){
-		throw "Set LANDLORD_ID env variable";
-	}
+	checkLandlord();
 
 	var json = JSON.stringify(request);
 	var auth = getAuth(json);

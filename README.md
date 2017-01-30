@@ -19,6 +19,8 @@ sturents.fetchHouses(function(response){
 
 #### Add house
 ```
+var sturents = require('./index.js');
+
 var request = {
     "reference" : "Propert_reference_1234", // Must be unique across my properties, will use this for updating this property
     "available_from": "2017-09-01",
