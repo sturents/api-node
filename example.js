@@ -16,8 +16,7 @@ var sturents = require('./index.js');
 function list_houses(){
 
   console.log('Fetching all houses');
-  sturents.fetchHouses(function(json){
-  	var response = JSON.parse(json);
+  sturents.fetchHouses(function(response){
   	var houses = response.branches[0].properties;
   	console.log('Total properties found ' + houses.length);
   	houses.forEach(function(house){
@@ -26,7 +25,6 @@ function list_houses(){
   });
 
 }
-
 
 /**
  Example of add house
@@ -106,6 +104,5 @@ function add_house(){
       }
   };
 
-  var json = JSON.stringify(request);
-  sturents.addHouse(json);
+  sturents.addHouse(request);
 }
